@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ComposeExamples</string>
+    <string name="tv_simple_text_example">文本显示</string>
+</resources>
