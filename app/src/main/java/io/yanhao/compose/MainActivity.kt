@@ -1,8 +1,6 @@
 package io.yanhao.compose
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -86,7 +84,7 @@ private fun NavigationIcon( canNavigationBack: Boolean,
         IconButton(onClick = navigationUp) {
             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back")
         }
-    }else null
+    }
 }
 
 @Composable
@@ -98,7 +96,10 @@ private fun AppNavHost(
         startDestination = AppScreen.HomeScreen.name
     ){
         composable(route = AppScreen.HomeScreen.name){
-            HomeScreen()
+            HomeScreen(navController)
+        }
+        composable(route = AppScreen.ScreenSimpleText.name){
+            SimpleTextScreen()
         }
     }
 }

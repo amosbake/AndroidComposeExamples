@@ -1,5 +1,6 @@
 package io.yanhao.compose
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,24 +17,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import io.yanhao.compose.core.LearnSection
 import io.yanhao.compose.core.getLearnSections
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(navController: NavController){
     LazyColumn(modifier = Modifier.fillMaxHeight()){
         items(items = getLearnSections(), itemContent = {section ->
-            LearnSectionItem(section)
+            LearnSectionItem(section,navController)
         })
     }
 }
 
 @Composable
-fun LearnSectionItem(sectionData: LearnSection) {
+fun LearnSectionItem(sectionData: LearnSection,navController: NavController?) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(16.dp).clickable {
+                navController?.navigate(sectionData.route.name)
+            }
     ) {
         Card(
             shape = RoundedCornerShape(4.dp), modifier = Modifier.fillMaxWidth()
@@ -50,5 +54,5 @@ fun LearnSectionItem(sectionData: LearnSection) {
 @Preview
 @Composable
 fun LearnSectionItemPreview(){
-    LearnSectionItem(sectionData = getLearnSections()[0])
+    LearnSectionItem(sectionData = getLearnSections()[0],null)
 }
