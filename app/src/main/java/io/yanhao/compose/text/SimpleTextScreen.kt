@@ -1,4 +1,4 @@
-package io.yanhao.compose
+package io.yanhao.compose.text
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,12 +23,12 @@ fun SimpleTextScreen(){
 
 
 @Composable
-fun SimpleText(displayText:String){
+private fun SimpleText(displayText:String){
     Text(text = displayText)
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = false)
 @Composable
-fun SimpleTextPreview(){
+private fun SimpleTextPreview(){
     SimpleText("Jeckpack Compose 边练边学")
 }

@@ -1,4 +1,4 @@
-package io.yanhao.compose
+package io.yanhao.compose.core
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -17,8 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
@@ -73,7 +71,7 @@ private fun CommonTopAppBar(
             Text(text = curScreen.title)
         },
         modifier = modifier,
-        navigationIcon = { NavigationIcon(canNavigationBack, navigationUp)}
+        navigationIcon = { NavigationIcon(canNavigationBack, navigationUp) }
     )
 }
 
@@ -83,23 +81,6 @@ private fun NavigationIcon( canNavigationBack: Boolean,
     if (canNavigationBack){
         IconButton(onClick = navigationUp) {
             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back")
-        }
-    }
-}
-
-@Composable
-private fun AppNavHost(
-    navController: NavHostController
-){
-    NavHost(
-        navController = navController,
-        startDestination = AppScreen.HomeScreen.name
-    ){
-        composable(route = AppScreen.HomeScreen.name){
-            HomeScreen(navController)
-        }
-        composable(route = AppScreen.ScreenSimpleText.name){
-            SimpleTextScreen()
         }
     }
 }

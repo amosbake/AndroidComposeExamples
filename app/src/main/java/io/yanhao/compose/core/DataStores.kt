@@ -1,12 +1,10 @@
 package io.yanhao.compose.core
 
-import io.yanhao.compose.AppScreen
 
 data class LearnSection(
-    val name:String,
-    val route:AppScreen
+    val name: String, val route: AppScreen
 )
 
-fun getLearnSections() = listOf(
-    LearnSection("Simple Text",AppScreen.ScreenSimpleText)
-)
+fun getLearnSections() = AppScreen.values().filter { it != AppScreen.HomeScreen }.map {
+        LearnSection(it.name, it)
+    }
